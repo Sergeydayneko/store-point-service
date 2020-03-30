@@ -1,0 +1,30 @@
+server:
+  port: ${GATEWAY_PORT:4041}
+
+spring:
+  application:
+    name: store-point-service
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_SERVER:localhost}:${POSTGRES_PORT:5431}/store
+    driver-class-name: org.postgresql.Driver
+    username: ${POSTGRES_STANDRAD_USERNAME:postgres}
+    password: ${POSTGRES_STANDARD_USERNAME:password}
+  jpa:
+    properties:
+      hibernate:
+        default_schema: purchase_management
+        format_sql: true
+    show-sql: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    appname: store-point-service
+    lease-renewal-interval-in-seconds: ${RENEWAL_INTERVAL:20}
+    lease-expiration-duration-in-seconds: ${LEASE_EXPIRATION:40}
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://${EURIKA_SERVER_HOST:localhost}:${EURIKA_SERVER_PORT:5050}/eureka
+
