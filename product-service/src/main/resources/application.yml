@@ -1,0 +1,15 @@
+server:
+  port: ${PRODUCT_SERVICE_PORT:4042}
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    appname: product-service
+    lease-renewal-interval-in-seconds: ${RENEWAL_INTERVAL:20}
+    lease-expiration-duration-in-seconds: ${LEASE_EXPIRATION:40}
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://${EURIKA_SERVER_HOST:localhost}:${EURIKA_SERVER_PORT:5050}/eureka

@@ -19,7 +19,7 @@ spring:
 eureka:
   instance:
     prefer-ip-address: true
-    appname: store-point-service
+    appname: store-service
     lease-renewal-interval-in-seconds: ${RENEWAL_INTERVAL:20}
     lease-expiration-duration-in-seconds: ${LEASE_EXPIRATION:40}
   client:
