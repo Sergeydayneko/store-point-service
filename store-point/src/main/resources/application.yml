@@ -1,9 +1,9 @@
 server:
-  port: ${GATEWAY_PORT:4041}
+  port: ${STORE_POINT_PORT:4041}
 
 spring:
   application:
-    name: store-point-service
+    name: ${STORE_POINT_NAME:storeService}
   datasource:
     url: jdbc:postgresql://${POSTGRES_SERVER:localhost}:${POSTGRES_PORT:5431}/store
     driver-class-name: org.postgresql.Driver
