@@ -1,7 +1,6 @@
 server:
   port: ${PRODUCT_SERVICE_PORT:4042}
 
-
 eureka:
   instance:
     prefer-ip-address: true
