@@ -28,3 +28,9 @@ eureka:
     service-url:
       defaultZone: http://${EURIKA_SERVER_HOST:localhost}:${EURIKA_SERVER_PORT:5050}/eureka
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+
