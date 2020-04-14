@@ -1,12 +1,14 @@
 package ru.dayneko.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import ru.dayneko.model.dto.CourierDto;
 import ru.dayneko.service.CourierService;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @RestController
 @RequestMapping("/order")
@@ -18,5 +20,16 @@ public class CourierController {
     @GetMapping("/couriers")
     public Flux<CourierDto> getAllCourirs() {
         return courierService.getAllCouriers();
+    }
+
+    @PostMapping("/courier")
+    public Mono<CourierDto> createCourier(@RequestBody @NotNull @Valid CourierDto courierDto) {
+        return courierService.createCourier(courierDto);
+    }
+
+    // TODO add additional ID for courier for updating and deleting
+    @PutMapping("/courier")
+    public Mono<CourierDto> updateCourier(@RequestBody @NotNull @Valid CourierDto courierDto) {
+        return courierService.updateCourier(courierDto);
     }
 }

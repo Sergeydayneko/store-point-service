@@ -1,5 +1,6 @@
 package ru.dayneko.model.entity;
 
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -11,6 +12,7 @@ import java.util.Set;
 
 @Data
 @Document("courier")
+@Builder
 public class CourierEntity {
 
     @MongoId

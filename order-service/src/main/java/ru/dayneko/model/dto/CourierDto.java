@@ -13,5 +13,6 @@ public class CourierDto {
 
     private Set<String> managedAddresses;
 
-    private boolean isAvailable;
+    @Builder.Default
+    private boolean isAvailable = true;
 }
