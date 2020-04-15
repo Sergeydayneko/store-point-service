@@ -12,7 +12,7 @@ public interface CourierService {
 
     Mono<CourierDto> createCourier(CourierDto courierDto);
 
-    Mono<CourierDto> updateCourier(CourierDto courierDto);
+    Mono<CourierDto> updateCourierByPersonalId(CourierDto courierDto);
 
-    Mono<CourierDto> deleteCourier(CourierDto courierDto);
+    Mono<Long> deleteCourierByPersonalId(Long personalId);
 }

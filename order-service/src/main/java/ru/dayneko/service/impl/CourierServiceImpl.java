@@ -43,12 +43,12 @@ public class CourierServiceImpl implements CourierService {
     }
 
     @Override
-    public Mono<CourierDto> updateCourier(CourierDto courierDto) {
-        Query query = new Query();
-        query.addCriteria(Criteria.where("courierName").is(courierDto.getCourierName()));
+    public Mono<CourierDto> updateCourierByPersonalId(CourierDto courierDto) {
+        Query query = new Query().addCriteria(Criteria.where("personalId").is(courierDto.getPersonalId()));
 
-        Update update = new Update();
-        update.set("managedAddresses", courierDto.getManagedAddresses());
+        Update update = new Update().set("managedAddresses", courierDto.getManagedAddresses())
+                .set("courierName", courierDto.getCourierName())
+                .set("isAvailable", courierDto.isAvailable());
 
         return mongoTemplate
                 .findAndModify(query, update, CourierEntity.class)
@@ -56,9 +56,7 @@ public class CourierServiceImpl implements CourierService {
     }
 
     @Override
-    public Mono<CourierDto> deleteCourier(CourierDto courierDto) {
-        return courierRepository
-                .deleteByCourierName(courierDto.getCourierName())
-                .map(DTOUtils::convertCourierEntityToDto);
+    public Mono<Long> deleteCourierByPersonalId(Long personalId) {
+        return courierRepository.deleteByPersonalId(personalId);
     }
 }

@@ -27,9 +27,13 @@ public class CourierController {
         return courierService.createCourier(courierDto);
     }
 
-    // TODO add additional ID for courier for updating and deleting
     @PutMapping("/courier")
-    public Mono<CourierDto> updateCourier(@RequestBody @NotNull @Valid CourierDto courierDto) {
-        return courierService.updateCourier(courierDto);
+    public Mono<CourierDto> updateCourierByPersonalId(@RequestBody @NotNull @Valid CourierDto courierDto) {
+        return courierService.updateCourierByPersonalId(courierDto);
+    }
+
+    @DeleteMapping("/courier/{courierId}")
+    public Mono<Long> deleteCourierByPersonalId(@PathVariable(name = "courierId") Long courierId) {
+        return courierService.deleteCourierByPersonalId(courierId);
     }
 }

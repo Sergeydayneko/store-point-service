@@ -12,6 +12,7 @@ public class DTOUtils {
 
     public static CourierDto convertCourierEntityToDto(@NotNull CourierEntity courierEntity) {
         return CourierDto.builder()
+                .personalId(courierEntity.getPersonalId())
                 .courierName(courierEntity.getCourierName())
                 .isAvailable(courierEntity.isAvailable())
                 .managedAddresses(courierEntity.getManagedAddresses())
@@ -20,6 +21,7 @@ public class DTOUtils {
 
     public static CourierEntity convertCourierDtoToEntity(@NotNull CourierDto courierDto) {
         return CourierEntity.builder()
+                .personalId(courierDto.getPersonalId())
                 .courierName(courierDto.getCourierName())
                 .managedAddresses(courierDto.getManagedAddresses())
                 .isAvailable(courierDto.isAvailable())

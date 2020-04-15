@@ -9,6 +9,8 @@ import java.util.Set;
 @Data
 public class CourierDto {
 
+    private long personalId;
+
     private String courierName;
 
     private Set<String> managedAddresses;

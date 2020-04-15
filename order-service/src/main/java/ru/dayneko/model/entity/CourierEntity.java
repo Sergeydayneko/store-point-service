@@ -18,6 +18,9 @@ public class CourierEntity {
     @MongoId
     private String courierId;
 
+    @Field("personalId")
+    private long personalId;
+
     @Field("courierName")
     @NotNull
     private String courierName;
